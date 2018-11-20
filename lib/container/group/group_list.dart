@@ -1,3 +1,4 @@
+import 'package:easy_drivers/page/group_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -14,7 +15,6 @@ class GroupsCard extends StatelessWidget {
         child: new Material(
           color: Colors.lightBlueAccent,
           child: new InkWell(
-            /*
             onTap: () {
               Navigator.push(
                 context,
@@ -23,8 +23,7 @@ class GroupsCard extends StatelessWidget {
                 ),
               );
             },
-            */
-            onTap: null,
+            //onTap: null,
             child: new Padding(
                 padding: new EdgeInsets.symmetric(vertical: 15.0, horizontal: 150.0),
                 child: text

@@ -20,17 +20,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return StoreProvider(
       store: store,
       child: MaterialApp(
           title: title,
           routes: <String, WidgetBuilder>{
-            //'/': (BuildContext context) => RootPage(),
+            '/': (BuildContext context) => RootPage(),
             '/create_group': (BuildContext context) => null, //TODO:
             '/add_group': (BuildContext context) => null, //TODO:
             '/group': (BuildContext context) => null, //TODO:
           },
-          home: RootPage()
+          //home: RootPage()
       )
     );
   }
