@@ -35,7 +35,6 @@ class AddGroupPageState extends State<AddGroupPage> {
     }
     setState(() {
       this.formValidator = response;
-      print(formValidator);
     });
 
     if (formKey.currentState.validate()) {
@@ -44,16 +43,49 @@ class AddGroupPageState extends State<AddGroupPage> {
   }
 
 
-  void _addGroup(FirebaseUser user, String groupCode) {
+  void _addGroup(FirebaseUser user, String groupCode) async {
     print("Group CODE in _addGroup(): $groupCode");
-    //Firestore firestore = Firestore.instance;
-    /*
-    await firestore.runTransaction((Transaction tx) async {
-      DocumentReference ref = firestore.collection('groups').document(
-          groupCode);
-      DocumentSnapshot snapshot = await tx.get(ref);
-      //TODO: check if is tx.set or tx.update
 
+    Map<String, dynamic> userMap = {
+      'name' : user.email,
+      'data' : {
+        'absent' : 0,
+        'driven' : 0,
+        'not_driven' : 0
+      }
+    };
+
+    Firestore store = Firestore.instance;
+    String groupName;
+
+    DocumentReference groupRef = store.collection('groups').document(groupCode);
+    DocumentSnapshot snap = await groupRef.get();
+    groupName = snap.data['name'];
+    print(groupName);
+    groupRef.collection('users').document(user.uid).setData(userMap);
+    DocumentReference userRef = store.collection('users').document(user.uid).collection('groups').document(groupCode);
+    Map<String, dynamic> groupMap = {
+      'name' : groupName,
+    };
+    userRef.setData(groupMap);
+
+
+    /* There is a bug on android with the transaction
+    //Set user in the group database
+    await store.runTransaction((Transaction tx) async {
+      DocumentReference groupRef = store.collection('groups').document(groupCode);
+      DocumentSnapshot snap = await tx.get(groupRef);
+      groupName = snap.data['name'];
+      print(groupName);
+      await tx.set(groupRef.collection('users').document(user.uid), userMap);
+    });
+    //Set group in the user database
+    await store.runTransaction((Transaction tx) async {
+      DocumentReference ref = store.collection('users').document(user.uid).collection('groups').document(groupCode);
+      Map<String, dynamic> temp = {
+        'name' : groupName,
+      };
+      await tx.set(ref, temp);
     });
     */
   }
