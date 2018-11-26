@@ -19,7 +19,7 @@ class GroupsCard extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Group(groupId: groupId),
+                  builder: (context) => GroupPage(groupId: groupId),
                 ),
               );
             },

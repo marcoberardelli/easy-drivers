@@ -30,13 +30,13 @@ class DrawerContainer extends StatelessWidget {
               ListTile(
                 title: Text("Home"),
                 leading: Icon(Icons.home),
-                selected: 0 == selectedIndex,
-                onTap: null,
+                selected: selectedIndex == 0,
+                onTap: () => Navigator.popUntil(context, ModalRoute.withName('/'))
               ),
               ListTile(
                 title: Text("Settings"),
                 leading: Icon(Icons.settings_applications),
-                selected: 1 == selectedIndex,
+                selected: selectedIndex == 1,
                 onTap: null,
               ),
               Divider(
@@ -66,7 +66,6 @@ class DrawerContainer extends StatelessWidget {
       },
     );
   }
-
 }
 
 

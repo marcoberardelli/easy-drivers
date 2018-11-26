@@ -11,11 +11,11 @@ class MenuItem {
   const MenuItem({@required this.action, @required this.title});
 }
 
-class Group extends StatelessWidget {
+class GroupPage extends StatelessWidget {
 
   final String groupId;
 
-  Group({@required this.groupId});
+  GroupPage({@required this.groupId});
 
   final List<MenuItem> choices = const <MenuItem>[
     const MenuItem(title: 'Change name', action: MenuAction.changeName),
