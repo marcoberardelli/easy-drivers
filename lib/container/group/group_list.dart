@@ -11,10 +11,10 @@ class GroupsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Card(
-        child: new Material(
+    return Card(
+        child: Material(
           color: Colors.lightBlueAccent,
-          child: new InkWell(
+          child: InkWell(
             onTap: () {
               Navigator.push(
                 context,
@@ -24,8 +24,8 @@ class GroupsCard extends StatelessWidget {
               );
             },
             //onTap: null,
-            child: new Padding(
-                padding: new EdgeInsets.symmetric(vertical: 15.0, horizontal: 150.0),
+            child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 150.0),
                 child: text
             ),
           ),
@@ -43,15 +43,15 @@ class GroupList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new StreamBuilder(
+    return StreamBuilder(
       stream: Firestore.instance.collection('users').document(_userUid).collection('groups').snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData || _userUid == null) return new Text('Loading...');
-        return new ListView(
+        if (!snapshot.hasData || _userUid == null) return Text('Loading...');
+        return ListView(
           children: snapshot.data.documents.map((DocumentSnapshot document) {
             return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: new GroupsCard(
+              padding: EdgeInsets.all(8.0),
+              child: GroupsCard(
                 text: Text(document['name']),
                 groupId: document.documentID,
               ),

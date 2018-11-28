@@ -35,7 +35,8 @@ class CreateGroupState extends State<CreateGroupPage> {
       'members' : [user.uid,],
     };
     Map<String, dynamic> userMap = {
-      'name' : user.email,
+      'name' : user.displayName,
+      'email' : user.email,
       'data' : {
         'absent' : 0,
         'driven' : 0,

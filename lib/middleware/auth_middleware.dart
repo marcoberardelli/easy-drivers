@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_drivers/action/auth_action.dart';
 import 'package:easy_drivers/model/app_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,6 +32,17 @@ Middleware<AppState> _createLogInMiddleware() {
             accessToken: googleAuth.accessToken
         );
 
+        Map<String, dynamic> userInfo = {
+          'email' : user.email,
+          'name' : user.displayName,
+        };
+        final DocumentReference userRef = Firestore.instance.collection('users').document(user.uid);
+        Firestore.instance.runTransaction((Transaction tx) async {
+          DocumentSnapshot postSnapshot = await tx.get(userRef);
+          if (postSnapshot.exists) {
+            await tx.set(userRef, userInfo);
+          }
+        });
         store.dispatch(new LogInSuccessful(user: user));
       } catch (error) {
         store.dispatch(LogInFail(error));

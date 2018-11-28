@@ -47,7 +47,8 @@ class AddGroupPageState extends State<AddGroupPage> {
     print("Group CODE in _addGroup(): $groupCode");
 
     Map<String, dynamic> userMap = {
-      'name' : user.email,
+      'name' : user.displayName,
+      'email' : user.email,
       'data' : {
         'absent' : 0,
         'driven' : 0,
@@ -137,9 +138,7 @@ class AddGroupPageState extends State<AddGroupPage> {
 class _ViewModel {
 
   FirebaseUser user;
-
   _ViewModel({this.user});
-
 
   static _ViewModel fromStore(Store<AppState> store) {
     return new _ViewModel(user: store.state.currentUser);
