@@ -78,7 +78,7 @@ class _ViewModel {
   static _ViewModel fromStore(Store<AppState> store) {
 
     return new _ViewModel(
-      user: store.state.currentUser,
+      user: store.state.firebaseUser,
       onLogout: () => store.dispatch(LogOut()),
     );
 

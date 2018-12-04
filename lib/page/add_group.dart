@@ -141,6 +141,6 @@ class _ViewModel {
   _ViewModel({this.user});
 
   static _ViewModel fromStore(Store<AppState> store) {
-    return new _ViewModel(user: store.state.currentUser);
+    return new _ViewModel(user: store.state.firebaseUser);
   }
 }

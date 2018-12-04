@@ -5,6 +5,7 @@ AppState appReducer(AppState state, action) {
 
   return AppState(
     isLoading: false,
-    currentUser: authReducer(state.currentUser, action)
+    firebaseUser: firebaseReducer(state.firebaseUser, action),
+    googleSignIn: googleReducer(state.googleSignIn, action)
   );
 }

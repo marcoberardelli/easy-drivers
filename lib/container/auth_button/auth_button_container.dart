@@ -40,9 +40,9 @@ class _ViewModel {
     //
     return new _ViewModel(
         buttonText:
-        store.state.currentUser != null ? 'Log Out' : 'Log in with Google',
+        store.state.firebaseUser != null ? 'Log Out' : 'Log in with Google',
         onPressedCallback: () {
-          if (store.state.currentUser != null) {
+          if (store.state.firebaseUser != null) {
             store.dispatch(new LogOut());
           } else {
             store.dispatch(new LogIn());

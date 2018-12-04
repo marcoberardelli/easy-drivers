@@ -1,19 +1,20 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AppState {
 
-  final int count;
   final bool isLoading;
-  final FirebaseUser currentUser;
+  final FirebaseUser firebaseUser;
+  final GoogleSignIn googleSignIn;
 
-  AppState({this.count = 0, this.isLoading = false, this.currentUser});
+  AppState({this.isLoading = false, this.firebaseUser, this.googleSignIn});
 
-  AppState copyWith({int count, bool isLoading}) {
+  AppState copyWith({bool isLoading}) {
     return AppState(
-      count: count ?? this.count,
       isLoading: isLoading ?? this.isLoading,
-      currentUser: currentUser ?? this.currentUser
+      firebaseUser: firebaseUser ?? this.firebaseUser,
+      googleSignIn: googleSignIn ?? this.googleSignIn
     );
   }
 }

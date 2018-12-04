@@ -37,7 +37,7 @@ class _ViewModel {
     // with the appropriate qualities:
     //
     return new _ViewModel(
-          user: store.state.currentUser
+          user: store.state.firebaseUser
         );
   }
 }

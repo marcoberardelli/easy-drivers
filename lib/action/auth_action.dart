@@ -1,13 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LogIn{}
 
-class LogInSuccessful{
+class LogInFirebase{
   final FirebaseUser user;
 
-  LogInSuccessful({@required this.user});
+  LogInFirebase({@required this.user});
 
+}
+
+class LogInGoogle{
+  final GoogleSignIn googleSignIn;
+  LogInGoogle({@required this.googleSignIn});
 }
 
 class LogInFail{

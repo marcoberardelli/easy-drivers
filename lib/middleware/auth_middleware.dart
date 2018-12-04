@@ -43,7 +43,8 @@ Middleware<AppState> _createLogInMiddleware() {
             await tx.set(userRef, userInfo);
           }
         });
-        store.dispatch(new LogInSuccessful(user: user));
+        store.dispatch(new LogInGoogle(googleSignIn: _googleSignIn));
+        store.dispatch(new LogInFirebase(user: user));
       } catch (error) {
         store.dispatch(LogInFail(error));
       }
