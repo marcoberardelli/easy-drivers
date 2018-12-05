@@ -20,7 +20,7 @@ dependencies:
   firebase_auth: "^0.6.5"
   cloud_firestore: ^0.8.2+3
   redux: "^3.0.0"
-  flutter_redux: "^0.5.0"
+  flutter_redux: "^0.5.2"
   redux_logging: "^0.3.0"
 
   # The following adds the Cupertino Icons font to your application.

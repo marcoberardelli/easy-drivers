@@ -17,8 +17,8 @@ class MenuItem {
 class GroupPage extends StatelessWidget {
 
   final String groupId;
-
-  GroupPage({@required this.groupId});
+  final String groupName;
+  GroupPage({@required this.groupId, @required this.groupName});
 
   final List<MenuItem> choices = const <MenuItem>[
     const MenuItem(title: 'Members', action: MenuAction.members),
@@ -77,15 +77,28 @@ class GroupPage extends StatelessWidget {
               Tab(icon: Icon(Icons.info)),
             ],
           ),
-          title: Text(groupId),
+          title: Text(groupName),
         ),
         body: TabBarView(
           children: [
             Scaffold(
-              floatingActionButton: FloatingActionButton(
-                child: new Icon(Icons.add),
-                tooltip: "New Group",
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+              floatingActionButton: FloatingActionButton.extended(
+                icon: Icon(Icons.add),
+                label: Text("Add run"),
                 onPressed: () => Navigator.pushNamed(context, '/add_ride'),
+              ),
+              bottomNavigationBar: BottomAppBar(
+                //shape: CircularNotchedRectangle(),
+                //notchMargin: 4.0,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    IconButton(icon: Icon(Icons.menu), onPressed: (){},),
+                    IconButton(icon: Icon(Icons.map), onPressed: (){},)
+                  ],
+                )
               ),
               body: Container(),
             ),

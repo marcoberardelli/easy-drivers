@@ -5,9 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GroupsCard extends StatelessWidget {
 
-  final Text text;
+  final String name;
   final String groupId;
-  GroupsCard({@required this.text, @required this.groupId});
+  GroupsCard({@required this.name, @required this.groupId});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +19,14 @@ class GroupsCard extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => GroupPage(groupId: groupId),
+                  builder: (context) => GroupPage(groupId: groupId, groupName: name),
                 ),
               );
             },
             //onTap: null,
             child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 150.0),
-                child: text
+                child: Text(name)
             ),
           ),
         )
@@ -52,7 +52,7 @@ class GroupList extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.all(8.0),
               child: GroupsCard(
-                text: Text(document['name']),
+                name: document['name'],
                 groupId: document.documentID,
               ),
             );

@@ -9,32 +9,52 @@ class AddRidePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Add Ride"),
       ),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          children: <Widget>[
-            Card(
-              elevation: 8.0,
-              child: Column(
-                children: <Widget>[
-                  Text("Insert length:"),
-                  Row(
+      body: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Card(
+                  elevation: 8.0,
+                  child: Column(
                     children: <Widget>[
-                      Text("1234"),
-                      Text("Km"),
+                      Text("Insert length:"),
+                      Row(
+                        children: <Widget>[
+                          Text("1234"),
+                          Text("Km"),
+                        ],
+                      ),
+                      RaisedButton(
+                        child: Text("Select"),
+                        onPressed: null,
+                      ),
                     ],
                   ),
-                  RaisedButton(
-                    child: Text("Select"),
-                    onPressed: null,
-                  ),
-                ],
+                ),
+                CustomRun(),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(),
+          ),
+          FlatButton(
+            color: Colors.blueGrey,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 30.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: Text("ADD CUSTOM RUN",
+                  textAlign: TextAlign.center,),
               ),
             ),
-            CustomRun(),
-          ],
-        ),
-      ),
+            onPressed: ()=>{},
+          )
+        ],
+      )
     );
   }
 }

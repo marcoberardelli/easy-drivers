@@ -42,19 +42,8 @@ class MemberCard extends StatelessWidget {
   final String email;
   MemberCard({@required this.name, @required this.email});
 
-/*
-  ListTile tile;
-  void _getUserInfo() async {
-
-    tile = ListTile(
-      title: Text(name),
-      subtitle: Text(email),
-    );
-  }
-*/
   @override
   Widget build(BuildContext context) {
-
 
     return Card(
       //child: Text(username),
