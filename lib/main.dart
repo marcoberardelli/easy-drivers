@@ -3,6 +3,7 @@ import 'package:easy_drivers/page/add_group.dart';
 import 'package:easy_drivers/page/add_ride.dart';
 import 'package:easy_drivers/page/create_group.dart';
 import 'package:easy_drivers/page/root_page.dart';
+import 'package:easy_drivers/page/select_user.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
             '/': (BuildContext context) => RootPage(),
             '/create_group': (BuildContext context) => CreateGroupPage(),
             '/add_group': (BuildContext context) => AddGroupPage(),
-            '/add_ride': (BuildContext context) => AddRidePage(),
+            //'/add_ride': (BuildContext context) => AddRidePage(),
             '/group': (BuildContext context) => null, //TODO:
           },
           //home: RootPage()

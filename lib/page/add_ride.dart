@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class AddRidePage extends StatelessWidget {
 
+  final String groupId;
+  AddRidePage({@required this.groupId});
+
   @override
   Widget build(BuildContext context) {
 

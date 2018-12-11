@@ -1,4 +1,5 @@
 import 'package:easy_drivers/page/members_page.dart';
+import 'package:easy_drivers/page/select_user.dart';
 import 'package:flutter/material.dart';
 
 enum MenuAction {
@@ -79,27 +80,38 @@ class GroupPage extends StatelessWidget {
           ),
           title: Text(groupName),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton.extended(
+          icon: Icon(Icons.add),
+          label: Text("Add run"),
+          //onPressed: () => Navigator.pushNamed(context, '/add_ride'),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SelectUser(groupId: groupId),
+            ),
+          ),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          //shape: CircularNotchedRectangle(),
+          //notchMargin: 4.0,
+          /*
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              IconButton(icon: Icon(Icons.menu), onPressed: (){},),
+              IconButton(icon: Icon(Icons.map), onPressed: (){},)
+            ],
+          ) */
+          child: Padding(
+            padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.55),
+            child: IconButton(icon: Icon(Icons.map), onPressed: (){}),
+          ),
+        ),
         body: TabBarView(
           children: [
             Scaffold(
-              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-              floatingActionButton: FloatingActionButton.extended(
-                icon: Icon(Icons.add),
-                label: Text("Add run"),
-                onPressed: () => Navigator.pushNamed(context, '/add_ride'),
-              ),
-              bottomNavigationBar: BottomAppBar(
-                //shape: CircularNotchedRectangle(),
-                //notchMargin: 4.0,
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    IconButton(icon: Icon(Icons.menu), onPressed: (){},),
-                    IconButton(icon: Icon(Icons.map), onPressed: (){},)
-                  ],
-                )
-              ),
               body: Container(),
             ),
             Icon(Icons.info),
